@@ -1,12 +1,14 @@
-```chmod -R 777 data
+```
 
-docker-compose up -d --build
+sh run.sh
 
-docker exec -it app_container bash
-ls /data
+docker ps
 
 docker exec -it <container_name> bash
 
-#检查挂载状态
-docker inspect app_container | grep Mounts -A 10
+sh script/validate-proxy.sh
+
+sh script/setup-pingpong.sh ***
+# *** == key
+
 ```
