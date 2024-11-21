@@ -2,21 +2,26 @@ version: '3.9'
 
 services:
   app:
-    build: .  # 指定 Dockerfile 的路径（当前目录）
+    build: 
+      context: .  # Build context directory
+      dockerfile: Dockerfile  # Specify the Dockerfile explicitly (optional if named "Dockerfile")
     container_name: pingpong
-    command: tail -f /dev/null  # 添加此行让容器保持运行
+    command: tail -f /dev/null  # Keep the container running in an idle state
     env_file:
-      - .env
+      - .env  # Load environment variables from a `.env` file
     deploy:
       resources:
         limits:
-          cpus: "4"
-          memory: 12GB
+          cpus: "4"  # Limit container CPU usage
+          memory: 12GB  # Limit container memory usage
     volumes:
-      - ./data:/data
+      - ./data:/data  # Map the host `data` directory to `/data` in the container
+      - ./script:/app/script  # Mount the `script` folder dynamically to the container
+      - /var/run/docker.sock:/var/run/docker.sock  # Allow the container to access the host's Docker daemon
     networks:
       - app_network
+    privileged: true  # Enable privileged mode if you need to run Docker-in-Docker
 
 networks:
   app_network:
-    driver: bridge
+    driver: bridge  # Use the bridge network for container-to-container communication

@@ -11,7 +11,7 @@ KEY=$1
 
 # Download the PINGPONG binary
 echo "Downloading PINGPONG binary..."
-wget -q https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG -O PINGPONG
+wget https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
 
 # Make the binary executable
 chmod +x PINGPONG

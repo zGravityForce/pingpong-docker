@@ -1,5 +1,7 @@
-```
+#step 1:
+- update the 
 
+```
 sh run.sh
 
 docker ps
@@ -21,6 +23,6 @@ docker rmi <image_id>
 docker rmi $(docker images -q) -f
 
 docker image prune -f
-docker system prune -a --volumes
+docker system prune -f
 
 ```
