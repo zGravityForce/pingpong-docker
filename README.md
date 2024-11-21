@@ -25,4 +25,7 @@ docker rmi $(docker images -q) -f
 docker image prune -f
 docker system prune -f
 
+// ----------------------
+source ./set_proxy.sh
+
 ```
